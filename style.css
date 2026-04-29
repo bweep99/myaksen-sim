@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-dark: #0b1121;
+    --bg-card: rgba(21, 30, 50, 0.6);
+    --primary-accent: #3b82f6; 
+    --primary-hover: #60a5fa;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-light: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(11, 17, 33, 0.6);
+    --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.4);
+    --border-radius: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Animated Dark Background --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-main);
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    
+    background: linear-gradient(-45deg, #0f172a, #020617, #1e293b, #0f2744);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    z-index: 1000;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 1px;
+}
+
+.nav-brand span {
+    color: var(--primary-accent);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-accent);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+
+/* --- Layout Containers --- */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px; /* Widened for better side-by-side grids */
+    margin: 100px auto 40px; 
+    padding: 0 20px;
+}
+
+.kotak {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin: 30px auto;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-light);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    background: linear-gradient(to right, #fff, var(--primary-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: var(--text-main);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.divider {
+    width: 50px;
+    height: 4px;
+    background: var(--primary-accent);
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+
+p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* --- Aktive Custom Grid Layout --- */
+.aktive-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.2fr; /* Left column smaller, Right column bigger */
+    gap: 30px;
+    margin-top: 30px;
+    align-items: stretch;
+}
+
+.aktive-left {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.aktive-left .kotak, .aktive-right .kotak {
+    margin: 0; /* Remove default margin so grid gap takes over */
+    height: 100%;
+}
+
+/* --- Embed / Iframe Styles --- */
+.iframe-container {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    background: #000;
+}
+
+.iframe-website {
+    height: 65vh;
+}
+
+.iframe-video {
+    padding-bottom: 56.25%; /* Perfect 16:9 Aspect Ratio */
+    height: 0;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* --- CTA Buttons --- */
+.action-area {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+}
+
+.btn-glow {
+    display: inline-block;
+    background: transparent;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 12px 30px;
+    border: 2px solid var(--primary-accent);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-glow:hover {
+    background: var(--primary-accent);
+    color: #fff;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+    transform: translateY(-3px);
+}
+
+/* --- Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* --- Footer --- */
+footer {
+    background: rgba(2, 6, 23, 0.8);
+    color: var(--text-muted);
+    padding: 20px;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-light);
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 850px) {
+    .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
+    main { margin-top: 130px; }
+    header h1 { font-size: 2rem; }
+    .kotak { padding: 25px; }
+    
+    /* Stack grid vertically on mobile */
+    .aktive-grid { grid-template-columns: 1fr; }
+    
+    /* Move the massive Newest Episode to the top on mobile */
+    .aktive-right { order: -1; }
+}
