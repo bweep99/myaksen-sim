@@ -274,3 +274,31 @@ footer {
     /* Move the massive Newest Episode to the top on mobile */
     .aktive-right { order: -1; }
 }
+
+.kotak-banner {
+    padding: 0; /* Removes the default 40px padding */
+    overflow: hidden; /* Makes sure the image respects the rounded corners */
+}
+
+.kotak-banner a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+
+.kotak-banner img {
+    width: 100%;
+    height: 100%;
+    max-height: 450px; /* Prevents it from becoming too massive on huge monitors */
+    object-fit: cover; /* Perfectly fits the box WITHOUT stretching */
+    display: block;
+    border-radius: var(--border-radius);
+    transition: transform 0.5s ease; /* Smooth hover transition */
+}
+
+/* Adds a nice zoom effect when you hover over the banner */
+.kotak-banner a:hover img {
+    transform: scale(1.05);
+}
