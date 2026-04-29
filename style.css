@@ -275,3 +275,30 @@ footer {
     .aktive-right { order: -1; }
 }
 
+/* --- Standalone Interactive Banner (Full Width) --- */
+.banner-link {
+    display: block;
+    width: 100%; /* Mengambil lebar penuh dari 'main', sama persis seperti .kotak */
+    margin: 30px 0; /* Menyamakan jarak margin dengan kotak lainnya */
+    text-decoration: none;
+    border-radius: var(--border-radius); /* Menyamakan lekukan dengan .kotak (16px) */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.banner-image {
+    display: block;
+    width: 100%;
+    height: auto; /* Kunci agar gambar tetap proporsional dan tidak melar */
+    border-radius: var(--border-radius);
+    transition: filter 0.3s ease;
+}
+
+/* Efek saat di-hover */
+.banner-link:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.5);
+}
+
+.banner-link:hover .banner-image {
+    filter: brightness(1.1);
+}
